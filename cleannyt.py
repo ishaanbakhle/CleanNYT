@@ -13,7 +13,6 @@ def getcontent(filename):
     for i in np.arange(num_pages):
         page = read_pdf.getPage(i)
         page_text = page.extractText()
-        # print(page_content)
         file_text = (file_text + page_text)
     content = file_text.split('\n')
     return(content)
@@ -36,7 +35,6 @@ def getdate(filename):
     Returns date of NYT article in [D,M,Y] format
     """
     content =getcontent(filename)
-    # finds index of the date date line
     counter = 0
     index = 0
     date_line = " "
@@ -48,12 +46,9 @@ def getdate(filename):
                 date_line = content[index+1].split(" ")
             counter = 1
         index = index+1
-
-    #processes date value
     date_str = date_line[1]
     date = int(date_str[:-1])
 
-    #processes month value
     month = 0
     if date_line[0]=='January':
         month = 1
@@ -79,13 +74,10 @@ def getdate(filename):
         month = 11
     elif date_line[0]=='December':
         month = 12
-
-    #processes year
+        
     year = int(date_line[2])
     date_arr = [date,month,year]
-
     return(date_arr)
-
 
 def getbody(filename):
     """
@@ -110,7 +102,8 @@ def getbody(filename):
             body_text = body_text + clipped[i]
     return(body_text)
 
-files_folder = "/Users/ishaanbakhle/Desktop/Projects/NYTSent/files/"
+#replace 'path' with the directory in which your NexisUni files are stored
+files_folder = 'path'
 file_names = os.listdir(files_folder)
 
 titles = []
@@ -143,4 +136,3 @@ for file in file_names:
 
 data = {'Article Title':titles,'Date':dates,'Text':bodies}
 df = pd.DataFrame(data)
-df
