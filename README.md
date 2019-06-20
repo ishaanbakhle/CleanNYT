@@ -3,8 +3,9 @@ A python tool to clean and parse NexisUni's formatting of New York Times article
 
 ## About
 
-Created as part of a project that required identification of unique unilateral presidential actions mentioned in New York Times articles between 2001 and 2017.  
+Created as part of a project that required identification of unique unilateral presidential actions mentioned in New York Times articles between 2001 and 2017.
 
+To execute and write to a csv, input `df.to_csv('filename')`.
 
 ## Repository
 `cleannyt.py` - A general script for processing NexisUni New York Times articles.
